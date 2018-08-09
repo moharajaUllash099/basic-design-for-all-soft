@@ -224,7 +224,7 @@ class ProductCatSettingsController extends Controller
         if (!empty($cat)) {
             $cat->is_deleted = 1;
             $cat->save();
-            set_notification('deactivate a categories ('.get_branch_name($id).') .');
+            set_notification('deactivate a categories ('.get_cat($id).') .');
             return back()->with('success_','Successfully Done!');
         }else{
             return back()->with('error_', 'There is no record found');
@@ -235,9 +235,9 @@ class ProductCatSettingsController extends Controller
     {
         $cat = Categories::find($id);
         if (!empty($cat)) {
-            $cat->is_deleted = 1;
+            $cat->is_deleted = 0;
             $cat->save();
-            set_notification('reactive a categories ('.get_branch_name($id).') .');
+            set_notification('reactive a categories ('.get_cat($id).') .');
             return back()->with('success_','Successfully Done!');
         }else{
             return back()->with('error_', 'There is no record found');
